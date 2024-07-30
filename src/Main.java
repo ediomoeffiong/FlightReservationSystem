@@ -85,11 +85,11 @@ class Reservation {
     }
 }
 
-public class FlightReservationSystem {
+public class Main {
     private List<Flight> flights;
     private List<Reservation> reservations;
 
-    public FlightReservationSystem() {
+    public Main() {
         flights = new ArrayList<>();
         reservations = new ArrayList<>();
     }
@@ -124,7 +124,7 @@ public class FlightReservationSystem {
     }
 
     public static void main(String[] args) {
-        FlightReservationSystem system = new FlightReservationSystem();
+        Main system = new Main();
         system.addFlight("FL123", "New York", 100);
         system.addFlight("FL124", "Los Angeles", 150);
 
