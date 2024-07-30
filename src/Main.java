@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 public class Main {
     public static Scanner scan = new Scanner(System.in);
+    public static int seatNumber;
     public static void main (String[] args) {
 
         System.out.println("Select an option");
@@ -26,6 +27,8 @@ public class Main {
 
         System.out.println("Please enter your details below.");
 
+        System.out.println(" ");
+
         System.out.print("Enter name: ");
         String name = scan.nextLine();
         System.out.print("Enter phone number: ");
@@ -33,7 +36,7 @@ public class Main {
         System.out.print("Enter email: ");
         String email = scan.nextLine();
         System.out.println("Enter seat number: ");
-        int seatNumber = scan.nextInt();
+        seatNumber = scan.nextInt();
 
         try {
             LocalDate currentDate = LocalDate.now();
@@ -51,20 +54,11 @@ public class Main {
 
     public static void showReservation() {
         System.out.println("These are the available seats");
-        String filePath = "Reservation.txt";
+        String filePath = "..\\Flight Reservation System\\src\\Reservation.txt";
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
-                System.out.println(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line = "1";
-            while (br.readLine().equals(line)) {
                 System.out.println(line);
             }
         } catch (IOException e) {
@@ -79,7 +73,28 @@ public class Main {
     }
 
     public static void confirmReservation(int seatNumber) {
+        String fileName = "..\\Flight Reservation System\\src\\Reservation.txt";
+        String no = String.valueOf(seatNumber);
 
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            int lineNumber = 0;
+            boolean found = false;
+
+            while ((line = br.readLine()) != null) {
+                lineNumber++;
+                if (line.contains(no)) {
+                    System.out.println("Seat taken");
+                    found = true;
+                }
+            }
+
+            if (!found) {
+                System.out.println("Seat is available");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
