@@ -3,14 +3,15 @@ import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.LocalTime;
 public class Main {
-    public static Scanner scan = new Scanner(System.in);
     public static int seatNumber;
     public static void main (String[] args) {
 
-        System.out.println("Select an option");
+        Scanner scan = new Scanner(System.in);
+
         System.out.println("1. Make a reservation");
         System.out.println("2. Show reservations");
         System.out.println("3. Exit");
+        System.out.print("Select an option: ");
 
         int option = scan.nextInt();
 
@@ -25,16 +26,21 @@ public class Main {
 
     public static void makeReservation() {
 
+        Scanner scan = new Scanner(System.in);
+
         System.out.println("Please enter your details below.");
 
         System.out.println(" ");
 
         System.out.print("Enter name: ");
         String name = scan.nextLine();
+        System.out.println(" ");
         System.out.print("Enter phone number: ");
         String phoneNumber = scan.nextLine();
+        System.out.println(" ");
         System.out.print("Enter email: ");
         String email = scan.nextLine();
+        System.out.println(" ");
         System.out.println("Enter seat number: ");
         seatNumber = scan.nextInt();
 
